@@ -1,0 +1,13 @@
+.Rproj.user
+*.Rproj
+.Rhistory
+.RData
+.Ruserdata
+.DS_Store
+*.html
+*.pdf
+libs/*
+messages.txt
+_quarto_internal*
+*.png
+!./.Renviron_windows

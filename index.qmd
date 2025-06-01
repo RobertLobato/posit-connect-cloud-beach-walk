@@ -1,0 +1,13 @@
+---
+format:
+  revealjs: 
+    theme: dark
+    embed-resources: true
+    menu: false
+---
+
+```{r generate-figure, echo=FALSE, warning=FALSE}
+source("beach_walk_figure_generator.R")
+```
+
+![](beach_walk.png){.nostretch fig-align="center" width="100%"}
