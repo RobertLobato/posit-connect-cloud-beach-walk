@@ -7,7 +7,7 @@ format:
 ---
 
 ```{r generate-figure, echo=FALSE, warning=FALSE}
-rsconnect::writeManifest()
+# rsconnect::writeManifest()
 source("beach_walk_figure_generator.R")
 ```
 
