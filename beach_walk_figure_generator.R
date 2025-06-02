@@ -3,11 +3,12 @@ library(jsonlite)
 library(lubridate)
 library(tidyverse)
 library(ggtext)
+library(ggimage)
 
 # Coordinates for Jacksonville Beach, FL
 lat <- 30.2947
 lon <- -81.3931
-location <- "Jacksonville Beach, FL"
+location <- "32250"
 
 # Date
 date <- Sys.Date()
@@ -132,7 +133,7 @@ weather_forecast <- get_weather_forecast_info(location, WEATHER_API_KEY) %>%
 annotation_text <- tribble(~label_text,
                            paste0("First Light @ ",
                                   format(first_light, "%H:%M"), "<br>",
-                                  "Feels Like: ", weather_forecast$feelslike_f, "F<br>",
+                                  "Temp: ", weather_forecast$temp_f, "°F<br>",
                                   "Wind: ", weather_forecast$wind_mph," mph ",
                                   weather_forecast$wind_dir, "<br>",
                                   "Sky: ", weather_forecast$condition.text,"<br>",
@@ -163,6 +164,11 @@ p1 <- tides %>%
                 # color = "red",
                 family = "Roboto Condensed",
                 hjust = 0, vjust = 0.5) +
+  geom_image(data = tibble(dttm = first_light_hms + minutes(45),
+                           height = 0.5),
+             aes(image = "walk_icon.png",
+                 x = dttm, y = height),
+             size = 0.15) +
   scale_x_datetime(date_labels = "%H:%M<br>%d %b",
                    breaks = tides_hilo$dttm,
                    limits = c(first_light_hms - hours(6),
