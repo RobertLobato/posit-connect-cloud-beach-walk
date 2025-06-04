@@ -1171,7 +1171,7 @@
         "Maintainer": "Guangchuang Yu <guangchuangyu@gmail.com>",
         "Repository": "RSPM",
         "Date/Publication": "2023-06-19 04:10:02 UTC",
-        "Built": "R 4.5.0; ; 2025-04-05 03:37:15 UTC; unix"
+        "Built": "R 4.4.0; ; 2024-04-26 05:21:20 UTC; unix"
       }
     },
     "ggplot2": {
@@ -3392,10 +3392,10 @@
       "checksum": "6048e30a0a248125afdbc8acfffa500f"
     },
     "beach_walk.png": {
-      "checksum": "2f6a85bdf351be4af2db721ea2ed6819"
+      "checksum": "5410670bc165fdfc25602e843517b16a"
     },
     "index.html": {
-      "checksum": "7bdc0f75605b8ae8d8984d2b80b3f56b"
+      "checksum": "4cad2c9ac96680751f9feb5c1671d5c3"
     },
     "index.qmd": {
       "checksum": "e5b83c3f516be8ec31818859455b35ce"
