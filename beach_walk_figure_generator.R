@@ -101,7 +101,7 @@ weather_forecast <- get_nws_forecast_info() %>%
 annotation_text <- tribble(~label_text,
                            paste0("First Light @ ",
                                   format(first_light, "%H:%M"), "<br>",
-                                  "Temp: ", weather_forecast$temperature, "°F<br>",
+                                  "Temp: ", weather_forecast$temperature, "F<br>",
                                   "Wind: ", weather_forecast$windSpeed, " ",
                                   weather_forecast$windDirection, "<br>",
                                   "Sky: ", weather_forecast$shortForecast,"<br>",
