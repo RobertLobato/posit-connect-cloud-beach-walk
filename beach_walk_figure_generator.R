@@ -3,6 +3,7 @@ library(jsonlite)
 library(lubridate)
 library(tidyverse)
 library(ggtext)
+library(ggimage)
 
 # Coordinates for Jacksonville Beach, FL
 lat <- 30.2947
@@ -121,9 +122,9 @@ p1 <- tides %>%
              size = 2) +
   annotate("rect",
            xmin = first_light_hms, xmax = first_light_hms + minutes(90),
-            ymin = -Inf, ymax = Inf,
-            fill = "darkorange",
-            alpha = 0.4) +
+           ymin = -Inf, ymax = Inf,
+           fill = "darkorange",
+           alpha = 0.4) +
   geom_richtext(data = annotation_text,
                 x = first_light_hms + minutes(100),
                 y = max(tides$height)*1.2,
@@ -132,6 +133,11 @@ p1 <- tides %>%
                 # color = "red",
                 family = "Roboto Condensed",
                 hjust = 0, vjust = 0.5) +
+  geom_image(data = tibble(dttm = first_light_hms + minutes(45),
+                           height = 0.5),
+             aes(image = "walk_icon.png",
+                 x = dttm, y = max(tides$height)*1.2),
+             size = 0.15) +
   scale_x_datetime(date_labels = "%H:%M<br>%d %b",
                    breaks = tides_hilo$dttm,
                    limits = c(first_light_hms - hours(6),
