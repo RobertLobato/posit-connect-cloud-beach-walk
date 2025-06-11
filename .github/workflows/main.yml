@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '41 07 * * *'
+    - cron: '41 09 * * *'
 
 jobs:
   import-data:
@@ -30,6 +30,6 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add beach_walk.png
+          git add -f beach_walk.png
           git commit -m 'Data updated' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
