@@ -154,3 +154,53 @@ p1 <- tides %>%
         axis.text = element_markdown())
 
 ggsave("beach_walk.png", plot = p1, width = 7, height = 5, bg = "#fffff3")
+
+
+p1_dark <- tides %>%
+  ggplot(aes(x = dttm)) +
+  scale_x_datetime(date_labels = "%H:%M<br>%d %b",
+                   breaks = tides_hilo$dttm,
+                   limits = c(first_light_hms - hours(6),
+                              first_light_hms + hours(10))) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.15))) +
+  theme_minimal() +
+  labs(x = "", y = "Feet Above/Below MSL") +
+  theme(text = element_text(family = "Roboto Condensed",
+                            color = "white"),
+        plot.background = element_rect(fill = "black"),
+        plot.title = element_markdown(size = 14),
+        panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_blank(),
+        panel.grid.major.x = element_line(color = "grey20"),
+        axis.text = element_markdown(color = "white")) +
+  geom_hline(yintercept = 0,
+             color = "grey40") +
+  geom_path(aes(y = height),
+            linetype = "dashed",
+            color = "#3869a6",
+            # alpha = 0.4,
+            linewidth = 1.5) +
+  geom_point(data = tides_hilo,
+             aes(y = height),
+             color = "white",
+             size = 2) +
+  annotate("rect",
+           xmin = first_light_hms, xmax = first_light_hms + minutes(90),
+           ymin = -Inf, ymax = Inf,
+           fill = "gray70",
+           alpha = 0.3) +
+  geom_richtext(data = annotation_text,
+                x = first_light_hms + minutes(100),
+                y = max(tides$height)*1.2,
+                fill = NA, label.colour = NA,
+                label = annotation_text$label_text,
+                color = "white",
+                family = "Roboto Condensed",
+                hjust = 0, vjust = 0.5) +
+  geom_image(data = tibble(dttm = first_light_hms + minutes(45),
+                           height = 0.5),
+             aes(image = "walk_icon_white.png",
+                 x = dttm, y = max(tides$height)*1.2),
+             size = 0.15)
+
+ggsave("beach_walk_mm.png", plot = p1_dark, width = 7, height = 5)
