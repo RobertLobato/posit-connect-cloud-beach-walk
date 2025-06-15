@@ -203,4 +203,4 @@ p1_dark <- tides %>%
                  x = dttm, y = max(tides$height)*1.2),
              size = 0.15)
 
-ggsave("beach_walk_mm.png", plot = p1_dark, width = 7, height = 5)
+ggsave("beach_walk_dark.png", plot = p1_dark, width = 7, height = 5)
