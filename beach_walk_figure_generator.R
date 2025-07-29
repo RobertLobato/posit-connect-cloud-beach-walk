@@ -19,7 +19,7 @@ get_first_light <- function(lat, lon, date) {
                 "&lng=", lon, "&date=", date, "&formatted=0")
   res <- GET(url)
   data <- content(res, "parsed")
-  first_light <- data$results$civil_twilight_begin
+  first_light <- data$results$nautical_twilight_begin
   return(with_tz(ymd_hms(first_light), tzone = "America/New_York"))
 }
 
