@@ -5,6 +5,10 @@ library(tidyverse)
 library(ggtext)
 library(ggimage)
 
+color_text <- function (text_string, color = "#AD122A"){
+  sprintf("<span style='color: %s;'>%s</span>", color, text_string)
+}
+
 # Coordinates for Jacksonville Beach, FL
 lat <- 30.2947
 lon <- -81.3931
@@ -155,6 +159,16 @@ p1 <- tides %>%
 
 ggsave("beach_walk.png", plot = p1, width = 7, height = 5, bg = "#fffff3")
 
+annotation_text_dark <- tribble(~label_text,
+                           paste0(color_text( paste0("First Light @ ",
+                                                     format(first_light, "%H:%M")), "#FF8C00"),
+                                  "<br>",
+                                  "Temp: ", weather_forecast$temperature, "&deg;F<br>",
+                                  "Wind: ", weather_forecast$windSpeed, " ",
+                                  weather_forecast$windDirection, "<br>",
+                                  "Sky: ", weather_forecast$shortForecast,"<br>",
+                                  "Precip %: ", weather_forecast$probabilityOfPrecipitation.value)
+)
 
 p1_dark <- tides %>%
   ggplot(aes(x = dttm)) +
@@ -162,7 +176,7 @@ p1_dark <- tides %>%
                    breaks = tides_hilo$dttm,
                    limits = c(first_light_hms - hours(6),
                               first_light_hms + hours(10))) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.15))) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.3))) +
   theme_minimal() +
   labs(x = "", y = "Feet Above/Below MSL") +
   theme(text = element_text(family = "Roboto Condensed",
@@ -185,22 +199,24 @@ p1_dark <- tides %>%
              color = "white",
              size = 2) +
   annotate("rect",
-           xmin = first_light_hms, xmax = first_light_hms + minutes(90),
+           xmin = first_light_hms,
+           xmax = first_light_hms + minutes(90),
            ymin = -Inf, ymax = Inf,
            fill = "gray70",
            alpha = 0.3) +
-  geom_richtext(data = annotation_text,
-                x = first_light_hms + minutes(100),
-                y = max(tides$height)*1.2,
+  geom_richtext(data = annotation_text_dark,
+                x = first_light_hms + minutes(120),
+                y = max(tides$height)*1.6,
                 fill = NA, label.colour = NA,
-                label = annotation_text$label_text,
+                label = annotation_text_dark$label_text,
                 color = "white",
                 family = "Roboto Condensed",
+                size = 6,
                 hjust = 0, vjust = 0.5) +
   geom_image(data = tibble(dttm = first_light_hms + minutes(45),
                            height = 0.5),
              aes(image = "walk_icon_white.png",
-                 x = dttm, y = max(tides$height)*1.2),
-             size = 0.15)
+                 x = dttm, y = max(tides$height)*1.4),
+             size = 0.12)
 
-ggsave("beach_walk_dark.png", plot = p1_dark, width = 7, height = 5)
+ggsave("beach_walk_dark.png", plot = p1_dark, width = 5, height = 5)
