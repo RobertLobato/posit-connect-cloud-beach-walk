@@ -5,6 +5,9 @@ library(tidyverse)
 library(ggtext)
 library(ggimage)
 
+library(sysfonts)
+font_add_google("Roboto Condensed")
+
 color_text <- function (text_string, color = "#AD122A"){
   sprintf("<span style='color: %s;'>%s</span>", color, text_string)
 }
