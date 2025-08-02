@@ -6,6 +6,7 @@ library(ggtext)
 library(ggimage)
 
 library(sysfonts)
+library(showtext)
 font_add_google("Roboto Condensed")
 
 # Be sure to include library packages in .github/workflows/main.yml for GitHub Actions automation
