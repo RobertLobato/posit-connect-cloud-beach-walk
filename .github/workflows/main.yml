@@ -19,6 +19,7 @@ jobs:
             any::ggtext
             any::ggimage
             any::lubridate
+            any::sysfonts
 
       - name: Check out repository
         uses: actions/checkout@v3
