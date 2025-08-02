@@ -4,7 +4,6 @@ library(lubridate)
 library(tidyverse)
 library(ggtext)
 library(ggimage)
-library(showtext)
 
 # Be sure to include library packages in .github/workflows/main.yml
 # for GitHub Actions automation
