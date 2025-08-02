@@ -11,9 +11,11 @@ jobs:
 
       - name: Install packages
         uses: r-lib/actions/setup-r-dependencies@v2
+        name: Install dependencies
+        run: R -e 'install.packages(c("sysfonts"))'
         with:
           packages: |
-            any::tidyverse 
+            any::tidyverse
             any::httr
             any::jsonlite
             any::ggtext
