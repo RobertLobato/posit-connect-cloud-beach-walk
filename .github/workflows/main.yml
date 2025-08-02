@@ -27,7 +27,7 @@ jobs:
             any::ggtext
             any::ggimage
             any::lubridate
-            any::sysfonts
+            any::showtext
 
       - name: Import data
         run: Rscript -e 'source("beach_walk_figure_generator.R")'

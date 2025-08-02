@@ -4,11 +4,10 @@ library(lubridate)
 library(tidyverse)
 library(ggtext)
 library(ggimage)
+library(showtext)
 
-library(sysfonts)
-font_add_google("Roboto Condensed")
-
-# Be sure to include library packages in .github/workflows/main.yml for GitHub Actions automation
+# Be sure to include library packages in .github/workflows/main.yml
+# for GitHub Actions automation
 
 color_text <- function (text_string, color = "#AD122A"){
   sprintf("<span style='color: %s;'>%s</span>", color, text_string)
