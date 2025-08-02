@@ -14,6 +14,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libfreetype6-dev
 
+      - name: Check out repository
+        uses: actions/checkout@v3
+
       - name: Install packages
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
@@ -25,9 +28,6 @@ jobs:
             any::ggimage
             any::lubridate
             any::sysfonts
-
-      - name: Check out repository
-        uses: actions/checkout@v3
 
       - name: Import data
         run: Rscript -e 'source("beach_walk_figure_generator.R")'
