@@ -5,9 +5,6 @@ library(tidyverse)
 library(ggtext)
 library(ggimage)
 
-# Be sure to include library packages in .github/workflows/main.yml
-# for GitHub Actions automation
-
 color_text <- function (text_string, color = "#AD122A"){
   sprintf("<span style='color: %s;'>%s</span>", color, text_string)
 }
@@ -129,9 +126,9 @@ p1 <- tides %>%
              size = 2) +
   annotate("rect",
            xmin = first_light_hms, xmax = first_light_hms + minutes(90),
-            ymin = -Inf, ymax = Inf,
-            fill = "darkorange",
-            alpha = 0.4) +
+           ymin = -Inf, ymax = Inf,
+           fill = "darkorange",
+           alpha = 0.4) +
   geom_richtext(data = annotation_text,
                 x = first_light_hms + minutes(100),
                 y = max(tides$height)*1.2,
@@ -163,14 +160,14 @@ p1 <- tides %>%
 ggsave("beach_walk.png", plot = p1, width = 7, height = 5, bg = "#fffff3")
 
 annotation_text_dark <- tribble(~label_text,
-                           paste0(color_text( paste0("First Light @ ",
-                                                     format(first_light, "%H:%M")), "#FF8C00"),
-                                  "<br>",
-                                  "Temp: ", weather_forecast$temperature, "&deg;F<br>",
-                                  "Wind: ", weather_forecast$windSpeed, " ",
-                                  weather_forecast$windDirection, "<br>",
-                                  "Sky: ", weather_forecast$shortForecast,"<br>",
-                                  "Precip %: ", weather_forecast$probabilityOfPrecipitation.value)
+                                paste0(color_text( paste0("First Light @ ",
+                                                          format(first_light, "%H:%M")), "#FF8C00"),
+                                       "<br>",
+                                       "Temp: ", weather_forecast$temperature, "&deg;F<br>",
+                                       "Wind: ", weather_forecast$windSpeed, " ",
+                                       weather_forecast$windDirection, "<br>",
+                                       "Sky: ", weather_forecast$shortForecast,"<br>",
+                                       "Precip %: ", weather_forecast$probabilityOfPrecipitation.value)
 )
 
 p1_dark <- tides %>%
