@@ -176,7 +176,7 @@ p1_dark <- tides %>%
                    breaks = tides_hilo$dttm,
                    limits = c(first_light_hms - hours(6),
                               first_light_hms + hours(10))) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.3))) +
+  scale_y_continuous(expand = expansion(mult = c(0.05, 0.3))) +
   theme_minimal() +
   labs(x = "", y = "Feet Above/Below MSL") +
   theme(text = element_text(family = "Roboto Condensed",
