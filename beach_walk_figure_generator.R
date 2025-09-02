@@ -211,7 +211,7 @@ p1_dark <- tides %>%
                 label = annotation_text_dark$label_text,
                 color = "white",
                 family = "Roboto Condensed",
-                size = 6,
+                size = 5,
                 hjust = 0, vjust = 0.5) +
   geom_image(data = tibble(dttm = first_light_hms + minutes(45),
                            height = 0.5),
