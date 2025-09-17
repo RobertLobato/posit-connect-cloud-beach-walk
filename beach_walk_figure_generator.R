@@ -178,7 +178,7 @@ p1 <- tides %>%
     size = 0.15
   ) +
   scale_x_datetime(
-    date_labels = "%H:%M<br>%d %b",
+    date_labels = "%H:%M\n%d %b",
     breaks = tides_hilo$dttm,
     limits = c(first_light_hms - hours(6), first_light_hms + hours(10))
   ) +
@@ -227,7 +227,7 @@ annotation_text_dark <- tribble(
 p1_dark <- tides %>%
   ggplot(aes(x = dttm)) +
   scale_x_datetime(
-    date_labels = "%H:%M<br>%d %b",
+    date_labels = "%H:%M\n%d %b",
     breaks = tides_hilo$dttm,
     limits = c(first_light_hms - hours(6), first_light_hms + hours(10))
   ) +
