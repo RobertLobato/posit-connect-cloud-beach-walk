@@ -27,7 +27,7 @@ jobs:
             any::lubridate
 
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       - name: Import data
         run: Rscript -e 'source("beach_walk_figure_generator.R")'
