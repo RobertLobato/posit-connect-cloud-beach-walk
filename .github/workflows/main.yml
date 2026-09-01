@@ -1,6 +1,7 @@
 on:
   schedule:
-    - cron: '46 04 * * *'
+    - cron: '46 03 * * *'
+      timezone: 'America/New_York'  # Specify your timezone
   workflow_dispatch:
 
 jobs:
