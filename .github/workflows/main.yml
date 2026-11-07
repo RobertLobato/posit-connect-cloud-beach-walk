@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '46 22 * * *'
+    - cron: '46 21 * * *'
       timezone: 'America/New_York'
   workflow_dispatch:
 
